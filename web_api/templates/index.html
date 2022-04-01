@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static' , filename='style.css')}}" rel="stylesheet">
+    <link href="../static/style.css" rel="stylesheet">
+    <title>Weather App</title>
+</head>
+<body>
+    <div class="widget">
+            
+        <div class="left-panel panel">
+            <div class="date">
+                {{ data['location']['localtime'] }}
+            </div>
+            <div class="city">
+                {{ data['location']['name'] }}
+            </div>
+            <div class="temp">
+               <img src="{{ data['current']['weather_icons'][0] }}" width="60">
+               {{ data['current']['temperature'] }}&deg;
+            </div>
+
+        </div>
+
+
+ 
+        <div class="right-panel panel">
+            <img src="https://s5.postimg.cc/lifnombwz/mumbai1.png" alt="" width="160">
+        </div>
+
+    </div>
+
+    <div class="form">
+        <div class="subtitle">Choose a city to check the weather</div>
+        <form class="input-container ic1" id="form" method="POST" name="myForm">
+            <input class="input" type="text" name="city" placeholder="choose a city" /> 
+            <button class="submit" type="submit">check</button>
+    </div>
+</body>
+</html>

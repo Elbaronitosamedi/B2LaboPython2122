@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>Bienvenue sur votre pokedex {{session['user'] }}</h1>
+    {% for pokemon in data %}
+        <h3>{{ pokemon['name'] }} - {{pokemon['ptype']}}</h3>
+        <img src="{{pokemon['img']}}"> 
+        {% if pokemon['id']  in  captured : %}
+            <p> {{ pokemon['id'] }} </p>
+            <img src="https://www.pokepedia.fr/images/8/87/Pok%C3%A9_Ball.png">
+        {% endif %}
+        </br>
+        </br>
+        <form class = form id="form" method="POST" name="myForm">
+            <input value = "{{ pokemon['id'] }}" type="hidden" name="poke_id">
+            <button type="submit" name="add" value="add">Add</button> 
+            <button type="submit" name="remove" value="remove">Remove</button>
+        </form>
+    {% endfor %}
+</body>
+</html>
+
